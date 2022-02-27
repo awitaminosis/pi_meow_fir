@@ -3,3 +3,5 @@
 # [Chapter 2](chapters/2/2.html)
 
 # [Chapter 3](chapters/3/3.html)
+
+# [Chapter 4](chapters/4/4.html)
