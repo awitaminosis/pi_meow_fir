@@ -61,3 +61,5 @@
 ## [Chapter 30](chapters/30/30.html)
 
 ## [Chapter 31](chapters/31/31.html)
+
+## [Chapter 32](chapters/32/32.html)
