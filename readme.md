@@ -49,3 +49,5 @@
 ## [Chapter 24](chapters/24/24.html)
 
 ## [Chapter 25](chapters/25/25.html)
+
+## [Chapter 26](chapters/26/26.html)
