@@ -9,3 +9,5 @@
 # [Chapter 5](chapters/5/5.html)
 
 # [Chapter 6](chapters/6/6.html)
+
+# [Chapter 7](chapters/7/7.html)
