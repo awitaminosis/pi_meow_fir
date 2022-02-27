@@ -11,3 +11,5 @@
 # [Chapter 6](chapters/6/6.html)
 
 # [Chapter 7](chapters/7/7.html)
+
+# [Chapter 8](chapters/8/8.html)
