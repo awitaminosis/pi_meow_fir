@@ -1,2 +1,2 @@
 # 1
-[Chapter 1](chapters/1.html)
+[Chapter 1](chapters/1/1.html)
