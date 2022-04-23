@@ -1,77 +1,39 @@
 # The adventures of Pipika, Titika and Fir-fir
-
-## [Chapter 1](chapters/1/1.html)
-
-## [Chapter 2](chapters/2/2.html)
-
-## [Chapter 3](chapters/3/3.html)
-
-## [Chapter 4](chapters/4/4.html)
-
-## [Chapter 5](chapters/5/5.html)
-
-## [Chapter 6](chapters/6/6.html)
-
-## [Chapter 7](chapters/7/7.html)
-
-## [Chapter 8](chapters/8/8.html)
-
-## [Chapter 9](chapters/9/9.html)
-
-## [Chapter 10](chapters/10/10.html)
-
-## [Chapter 11](chapters/11/11.html)
-
-## [Chapter 12](chapters/12/12.html)
-
-## [Chapter 13](chapters/13/13.html)
-
-## [Chapter 14](chapters/14/14.html)
-
-## [Chapter 15](chapters/15/15.html)
-
-## [Chapter 16](chapters/16/16.html)
-
-## [Chapter 17](chapters/17/17.html)
-
-## [Chapter 18](chapters/18/18.html)
-
-## [Chapter 19](chapters/19/19.html)
-
-## [Chapter 20](chapters/20/20.html)
-
-## [Chapter 21](chapters/21/21.html)
-
-## [Chapter 22](chapters/22/22.html)
-
-## [Chapter 23](chapters/23/23.html)
-
-## [Chapter 24](chapters/24/24.html)
-
-## [Chapter 25](chapters/25/25.html)
-
-## [Chapter 26](chapters/26/26.html)
-
-## [Chapter 27](chapters/27/27.html)
-
-## [Chapter 28](chapters/28/28.html)
-
-## [Chapter 29](chapters/29/29.html)
-
-## [Chapter 30](chapters/30/30.html)
-
-## [Chapter 31](chapters/31/31.html)
-
-## [Chapter 32](chapters/32/32.html)
-
-## [Chapter 33](chapters/33/33.html)
-
-## [Chapter 34](chapters/34/34.html)
-
-## [Chapter 35](chapters/35/35.html)
-
-## [Chapter 36](chapters/36/36.html)
-
-## [Chapter 37](chapters/37/37.html)
-
-## [Chapter 38](chapters/38/38.html)
+## [I](chapters/1/index.html)
+## [II](chapters/2/index.html)
+## [III](chapters/3/index.html)
+## [IV](chapters/4/index.html)
+## [V](chapters/5/index.html)
+## [VI](chapters/6/index.html)
+## [VII](chapters/7/index.html)
+## [VIII](chapters/8/index.html)
+## [IX](chapters/9/index.html)
+## [X](chapters/10/index.html)
+## [XI](chapters/11/index.html)
+## [XII](chapters/12/index.html)
+## [XIII](chapters/13/index.html)
+## [XIV](chapters/14/index.html)
+## [XV](chapters/15/index.html)
+## [XVI](chapters/16/index.html)
+## [XVII](chapters/17/index.html)
+## [XVIII](chapters/18/index.html)
+## [XIX](chapters/19/index.html)
+## [XX](chapters/20/index.html)
+## [XXI](chapters/21/index.html)
+## [XXII](chapters/22/index.html)
+## [XXIII](chapters/23/index.html)
+## [XXIV](chapters/24/index.html)
+## [XXV](chapters/25/index.html)
+## [XXVI](chapters/26/index.html)
+## [XXVII](chapters/27/index.html)
+## [XXVIII](chapters/28/index.html)
+## [XXIX](chapters/29/index.html)
+## [XXX](chapters/30/index.html)
+## [XXXI](chapters/31/index.html)
+## [XXXII](chapters/32/index.html)
+## [XXXIII](chapters/33/index.html)
+## [XXXIV](chapters/34/index.html)
+## [XXXV](chapters/35/index.html)
+## [XXXVI](chapters/36/index.html)
+## [XXXVII](chapters/37/index.html)
+## [XXXVIII](chapters/38/indexhtml)
