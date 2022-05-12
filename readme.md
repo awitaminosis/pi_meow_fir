@@ -36,4 +36,4 @@
 ## [XXXV](chapters/35/index.html)
 ## [XXXVI](chapters/36/index.html)
 ## [XXXVII](chapters/37/index.html)
-## [XXXVIII](chapters/38/indexhtml)
+## [XXXVIII](chapters/38/index.html)
