@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="vendor/tw-elements.css" />
     </head>
     <body>
-        <script type="module">
+    <script type="module">
             import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
             createApp({
@@ -58,7 +58,19 @@
                             {"ind":37, "lvl":38, 'rom':'XXXVIII', "imgs":11, "title":"Подводная лодка"},
                             {"ind":38, "lvl":39, 'rom':'XXXIX', "imgs":5, "title":"Логика"},
                             {"ind":39, "lvl":40, 'rom':'XXXX', "imgs":3, "title":"Важные мысли"},
-                            {"ind":40, "lvl":41, 'rom':'XXXXI', "imgs":9, "title":"Жмурки"},
+                            {"ind":40, "lvl":41, 'rom':'XXXXI', "imgs":9, "title":"Жмурки",
+                                "text": [
+                                    "Друзья играли в жмурки. Первой водила Мышка.",
+                                    "Она слышала как громко убегал Тигр и довольно быстро поймала его.",
+                                    "Потом водил Тигр. Он долго искал хоть кого-нибудь.",
+                                    "И нашёл кого-то колючего за деревом. -\"Ёжик, я поймал тебя!\" -\"Тигр, а ты уверен?\"",
+                                    "Оказалось, что это поймалась их новогодняя ёлка.",
+                                    "\"Давайте я буду водить\" - говорит Крыска. А Мышка тем временем оказывает Тигру первую помощь.",
+                                    "\"Ёжик, я вот-вот поймаю тебя! Ты громко пыхтишь когда убегаешь\". Но тут Ёжик почувствовал запах червяков...",
+                                    "Замешкался... И тут Крыска его догнала. И споткнулась о Ёжика. Мышка несёт аптечку...",
+                                    "Крыске заклеивают пластырем пораненную лапку. Повязка у Ёжика. Тигр убегает прятаться. Ёжик водит. Но он не идёт за Тигром. Ёжик водит ложкой по ведру с червяками..."
+                                ]
+                            },
                             {"ind":41, "lvl":42, 'rom':'XXXXII', "imgs":33, "title":"Алфавит"},
                             {"ind":42, "lvl":43, 'rom':'XXXXIII', "imgs":6, "title":"Зимняя прогулка",
                                 "text": [
@@ -137,7 +149,7 @@
                 }
             }).mount('#app')
         </script>
-        <h1 class="py-8 white/20 font-semibold px-6 flex items-center justify-center sm:w-auto mt-4 text-3xl">Приключения Пипики, Титики и Фыр-Фыра</h1>
+    <h1 class="py-8 white/20 font-semibold px-6 flex items-center justify-center sm:w-auto mt-4 text-3xl">Приключения Пипики, Титики и Фыр-Фыра</h1>
         <h1 class="py-8 white/20 font-semibold px-6 flex items-center justify-center sm:w-auto mt-4 text-3xl">The adventures of Pipika, Titika and Fir-fir</h1>
         <div id="app" class="flex justify-center">
             <template v-if="isMenu">
