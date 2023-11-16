@@ -741,6 +741,19 @@
                 }
             }).mount('#app')
         </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            if (document.location.hash) {
+                chapterToGo = document.location.hash.replace('#','');
+                if (chapterToGo) {
+                    var chapterToGoBtn = document.querySelector('[data-rom-id='+chapterToGo+']');
+                    if (chapterToGoBtn) {
+                        chapterToGoBtn.click();
+                    }
+                }
+            }
+        });
+    </script>
     <h1 class="py-8 white/20 font-semibold px-6 flex items-center justify-center sm:w-auto mt-4 text-3xl">Приключения Пипики, Титики и Фыр-Фыра</h1>
         <h1 class="py-8 white/20 font-semibold px-6 flex items-center justify-center sm:w-auto mt-4 text-3xl">The adventures of Pipika, Titika and Fir-fir</h1>
         <div id="app" class="flex justify-center">
