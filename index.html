@@ -35,7 +35,15 @@
                 data() {
                     return {
                         isMenu: true,
+                        isChapters: false,
                         lvl: 0,
+                        page: 0,
+                        texts: [
+                            {"ind":1, "title":"111title", "inner":`111inner
+                            `},
+                            {"ind":2, "title":"222title", "inner":`222inner
+                            `},
+                        ],
                         content: [
                             {
                                 "ind":0,  "lvl":1, 'rom':'I', "imgs":5, "title":"Первая история",
@@ -733,10 +741,17 @@
                 methods: {
                     toLvl(lvl) {
                         this.isMenu = false;
+                        this.isChapters = true;
                         this.lvl = lvl;
                     },
                     toMenu() {
                         this.isMenu = true;
+                        this.isChapters = false;
+                    },
+                    toText(page) {
+                        this.isMenu = false;
+                        this.isChapters = false;
+                        this.page = page;
                     }
                 }
             }).mount('#app')
@@ -764,62 +779,111 @@
                             <span v-bind:data-rom-id="item.rom" @click="toLvl(item.ind)">{{item.rom}} <span v-if="item.title" class="ml-5">{{item.title}}</span></span>
                         </div>
                     </template>
+
+                </div>
+                <div class="px-4 sm:px-6 md:px-8 w-96 items-center columns-1">
+                    <template v-for="item in texts" :key="item.ind">
+                        <div class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 mt-4" @click="toText(item.ind)">
+                            <span v-bind:data-rom-id="item.ind" @click="toText(item.ind)">{{item.ind}}. <span v-if="item.title" class="ml-5">{{item.title}}</span></span>
+                        </div>
+                    </template>
                 </div>
             </template>
             <template v-else>
-                <div class="text-center my-5 mx-5">
-                    <h2 v-if="content[lvl - 1].title" class="text-2xl font-semibold">{{content[lvl - 1].title}}</h2>
+                <template v-if="isChapters">
                     <div class="text-center my-5 mx-5">
-                        <template v-if="lvl==1">
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
-                        </template>
-                        <template v-else>
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl-1)">prev</span>
-                        </template>
-                        <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
-                        <template v-if="lvl!=content.length">
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl+1)">next</span>
-                        </template>
-                        <template v-else>
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
-                        </template>
+                        <h2 v-if="content[lvl - 1].title" class="text-2xl font-semibold">{{content[lvl - 1].title}}</h2>
+                        <div class="text-center my-5 mx-5">
+                            <template v-if="lvl==1">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl-1)">prev</span>
+                            </template>
+                            <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
+                            <template v-if="lvl!=content.length">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl+1)">next</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
+                            </template>
 
-                        <div class="container py-4">
-                            <template v-for="i in content[lvl - 1].imgs" >
-                                <div class="row py-2" >
-                                    <div class="col-sm">
-                                        <img class="w-1/2 inline-block" v-bind:src="'chapters/' + (lvl) + '/'+ i +'.jpg'" alt="">
-                                        <template v-if="content[lvl - 1].text && content[lvl - 1].text[i-1]">
-                                            <br>
-                                            <img src="favicon.ico" class="
-                                                h-20 inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-100 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                                            data-bs-toggle="collapse" v-bind:data-bs-target='"#collapseExample" + (i-1)' aria-expanded="true" aria-controls="collapseExample">
+                            <div class="container py-4">
+                                <template v-for="i in content[lvl - 1].imgs" >
+                                    <div class="row py-2" >
+                                        <div class="col-sm">
+                                            <img class="w-1/2 inline-block" v-bind:src="'chapters/' + (lvl) + '/'+ i +'.jpg'" alt="">
+                                            <template v-if="content[lvl - 1].text && content[lvl - 1].text[i-1]">
+                                                <br>
+                                                <img src="favicon.ico" class="
+                                                    h-20 inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-100 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                                                data-bs-toggle="collapse" v-bind:data-bs-target='"#collapseExample" + (i-1)' aria-expanded="true" aria-controls="collapseExample">
 
-                                            <div class="collapse" v-bind:id='"collapseExample" + (i-1)' style="">
-                                                <div class="block p-6 rounded-lg shadow-lg bg-white text-2xl">
-                                                    {{content[lvl - 1].text[i-1]}}
+                                                <div class="collapse" v-bind:id='"collapseExample" + (i-1)' style="">
+                                                    <div class="block p-6 rounded-lg shadow-lg bg-white text-2xl">
+                                                        {{content[lvl - 1].text[i-1]}}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </template>
+                                            </template>
+                                        </div>
                                     </div>
-                                </div>
+                                </template>
+                            </div>
+                            <template v-if="lvl==1">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl-1)">prev</span>
+                            </template>
+                            <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
+                            <template v-if="lvl!=content.length">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl+1)">next</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
                             </template>
                         </div>
-                        <template v-if="lvl==1">
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
-                        </template>
-                        <template v-else>
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl-1)">prev</span>
-                        </template>
-                        <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
-                        <template v-if="lvl!=content.length">
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toLvl(lvl+1)">next</span>
-                        </template>
-                        <template v-else>
-                            <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
-                        </template>
                     </div>
-                </div>
+                </template>
+                <template v-else>
+
+                    <div class="text-center my-5 mx-5">
+                        <h2 class="text-2xl font-semibold">{{texts[page-1]['title']}}</h2>
+                        <div class="text-center my-5 mx-5">
+                            <template v-if="page==1">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toText(page-1)">prev</span>
+                            </template>
+                            <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
+                            <template v-if="page!=texts.length">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toText(page+1)">next</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
+                            </template>
+
+                            <div class="container py-4">
+                                 {{texts[page-1]['inner']}}
+                            </div>
+
+                            <template v-if="page==1">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">prev</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toText(page-1)">prev</span>
+                            </template>
+                            <span class="cursor-pointer mx-5 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out" @click="toMenu()">home</span>
+                            <template v-if="page!=texts.length">
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" @click="toText(page+1)">next</span>
+                            </template>
+                            <template v-else>
+                                <span class="cursor-pointer inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">next</span>
+                            </template>
+                        </div>
+                    </div>
+                </template>
             </template>
         </div>
     <script src="vendor/tw-elements.js"></script>
